@@ -1,5 +1,9 @@
 # Thai Tax Playground
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ratanon97/ThaiTaxCalculator)
+
+**Live Demo:** [https://thai-tax-playground.vercel.app](https://thai-tax-playground.vercel.app)
+
 A modern, interactive web application for calculating Thai personal income tax (ภาษีเงินได้บุคคลธรรมดา). Built with Next.js and TypeScript, featuring real-time calculations, retirement investment optimization, and comprehensive tax visualization.
 
 ## Features
