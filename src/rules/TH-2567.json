@@ -1,0 +1,245 @@
+{
+  "taxYear": 2567,
+  "yearLabel": "ปีภาษี 2567 (พ.ศ.)",
+  "effectiveFrom": "2024-01-01",
+  "effectiveTo": "2024-12-31",
+
+  "incomeRules": {
+    "employmentExpenseDeduction": {
+      "rate": 0.5,
+      "maxAmount": 100000,
+      "description": "หักค่าใช้จ่าย 50% ของเงินได้ แต่ไม่เกิน 100,000 บาท"
+    }
+  },
+
+  "personalAllowances": {
+    "self": {
+      "amount": 60000,
+      "description": "ค่าลดหย่อนส่วนตัว"
+    },
+    "spouse": {
+      "amount": 60000,
+      "description": "ค่าลดหย่อนคู่สมรส (ไม่มีเงินได้)",
+      "conditions": ["spouse_no_income"]
+    },
+    "child": {
+      "amountPerChild": 30000,
+      "additionalFor2018Onwards": 30000,
+      "maxChildren": null,
+      "description": "ค่าลดหย่อนบุตร คนละ 30,000 บาท (เพิ่ม 30,000 บาท สำหรับบุตรคนที่ 2 เป็นต้นไปที่เกิดตั้งแต่ปี 2561)"
+    },
+    "parentCare": {
+      "amountPerParent": 30000,
+      "maxParents": 4,
+      "description": "ค่าลดหย่อนบิดามารดา (อายุ 60 ปีขึ้นไป รายได้ไม่เกิน 30,000 บาท/ปี)",
+      "conditions": ["parent_age_60_plus", "parent_income_under_30000"]
+    },
+    "disabledCare": {
+      "amountPerPerson": 60000,
+      "description": "ค่าลดหย่อนอุปการะคนพิการหรือทุพพลภาพ"
+    }
+  },
+
+  "deductionBuckets": {
+    "retirement": {
+      "type": "combined",
+      "description": "กลุ่มลดหย่อนเพื่อการเกษียณ",
+      "percentageLimit": {
+        "rate": 0.30,
+        "baseDescription": "30% ของเงินได้พึงประเมิน"
+      },
+      "absoluteLimit": {
+        "amount": 500000,
+        "description": "รวมกันไม่เกิน 500,000 บาท"
+      },
+      "components": {
+        "providentFund": {
+          "id": "provident_fund",
+          "name": "กองทุนสำรองเลี้ยงชีพ (PVD)",
+          "nameShort": "PVD",
+          "individualCap": null,
+          "percentageOfSalaryCap": 0.15,
+          "description": "เงินสมทบกองทุนสำรองเลี้ยงชีพส่วนลูกจ้าง ไม่เกิน 15% ของเงินเดือน"
+        },
+        "governmentPensionFund": {
+          "id": "gpf",
+          "name": "กองทุนบำเหน็จบำนาญข้าราชการ (กบข.)",
+          "nameShort": "กบข.",
+          "individualCap": null,
+          "percentageOfSalaryCap": 0.15,
+          "description": "เงินสะสม กบข. ไม่เกิน 15% ของเงินเดือน"
+        },
+        "rmf": {
+          "id": "rmf",
+          "name": "กองทุนรวมเพื่อการเลี้ยงชีพ (RMF)",
+          "nameShort": "RMF",
+          "individualCap": null,
+          "percentageOfSalaryCap": 0.30,
+          "description": "RMF ไม่เกิน 30% ของเงินได้พึงประเมิน"
+        },
+        "ssf": {
+          "id": "ssf",
+          "name": "กองทุนรวมเพื่อการออม (SSF)",
+          "nameShort": "SSF",
+          "individualCap": 200000,
+          "percentageOfSalaryCap": 0.30,
+          "description": "SSF ไม่เกิน 30% ของเงินได้พึงประเมิน และไม่เกิน 200,000 บาท"
+        },
+        "pensionInsurance": {
+          "id": "pension_insurance",
+          "name": "เบี้ยประกันชีวิตแบบบำนาญ",
+          "nameShort": "ประกันบำนาญ",
+          "individualCap": 200000,
+          "percentageOfSalaryCap": 0.15,
+          "description": "เบี้ยประกันชีวิตแบบบำนาญ ไม่เกิน 15% ของเงินได้ และไม่เกิน 200,000 บาท"
+        },
+        "nsf": {
+          "id": "nsf",
+          "name": "กองทุนการออมแห่งชาติ (กอช.)",
+          "nameShort": "กอช.",
+          "individualCap": 30000,
+          "description": "เงินสะสมเข้ากองทุนการออมแห่งชาติ ไม่เกิน 30,000 บาท"
+        }
+      }
+    },
+
+    "lifeInsurance": {
+      "type": "individual",
+      "id": "life_insurance",
+      "name": "เบี้ยประกันชีวิต",
+      "description": "เบี้ยประกันชีวิตทั่วไป (กรมธรรม์ 10 ปีขึ้นไป)",
+      "absoluteLimit": 100000,
+      "spouseLimit": 10000,
+      "spouseCondition": "spouse_no_income",
+      "notes": "รวมเบี้ยประกันชีวิตตนเองไม่เกิน 100,000 บาท และคู่สมรสไม่เกิน 10,000 บาท"
+    },
+
+    "healthInsurance": {
+      "type": "individual",
+      "id": "health_insurance",
+      "name": "เบี้ยประกันสุขภาพ",
+      "description": "เบี้ยประกันสุขภาพตนเอง",
+      "absoluteLimit": 25000,
+      "combinedWithLifeInsurance": {
+        "enabled": true,
+        "combinedLimit": 100000,
+        "description": "รวมกับเบี้ยประกันชีวิตแล้วไม่เกิน 100,000 บาท"
+      }
+    },
+
+    "parentHealthInsurance": {
+      "type": "individual",
+      "id": "parent_health_insurance",
+      "name": "เบี้ยประกันสุขภาพบิดามารดา",
+      "description": "เบี้ยประกันสุขภาพบิดามารดา (ของตนเองและคู่สมรส)",
+      "absoluteLimit": 15000,
+      "conditions": ["parent_income_under_30000"]
+    },
+
+    "socialSecurity": {
+      "type": "individual",
+      "id": "social_security",
+      "name": "ประกันสังคม",
+      "description": "เงินสมทบกองทุนประกันสังคม",
+      "absoluteLimit": 9000,
+      "notes": "สูงสุด 750 บาท/เดือน รวม 9,000 บาท/ปี"
+    }
+  },
+
+  "otherDeductions": {
+    "homeLoanInterest": {
+      "id": "home_loan_interest",
+      "name": "ดอกเบี้ยเงินกู้ยืมซื้อบ้าน",
+      "absoluteLimit": 100000,
+      "description": "ดอกเบี้ยเงินกู้ยืมเพื่อซื้อ/สร้างที่อยู่อาศัย ไม่เกิน 100,000 บาท"
+    },
+    "easyEReceipt": {
+      "id": "easy_e_receipt",
+      "name": "ช้อปดีมีคืน (Easy E-Receipt)",
+      "absoluteLimit": 50000,
+      "description": "ค่าซื้อสินค้า/บริการในประเทศ ตามนโยบายกระตุ้นเศรษฐกิจ",
+      "conditions": ["requires_e_tax_invoice"],
+      "temporaryMeasure": true
+    }
+  },
+
+  "donations": {
+    "education": {
+      "id": "education_donation",
+      "name": "เงินบริจาคเพื่อการศึกษา/กีฬา",
+      "multiplier": 2,
+      "maxPercentOfNetIncome": 0.10,
+      "description": "หักได้ 2 เท่าของเงินบริจาค แต่ไม่เกิน 10% ของเงินได้หลังหักค่าใช้จ่ายและลดหย่อน"
+    },
+    "general": {
+      "id": "general_donation",
+      "name": "เงินบริจาคทั่วไป",
+      "multiplier": 1,
+      "maxPercentOfNetIncome": 0.10,
+      "description": "หักได้ตามจริง แต่ไม่เกิน 10% ของเงินได้หลังหักค่าใช้จ่ายและลดหย่อน"
+    },
+    "politicalParty": {
+      "id": "political_donation",
+      "name": "เงินบริจาคพรรคการเมือง",
+      "absoluteLimit": 10000,
+      "description": "เงินบริจาคให้พรรคการเมือง ไม่เกิน 10,000 บาท"
+    }
+  },
+
+  "taxBrackets": [
+    {
+      "minIncome": 0,
+      "maxIncome": 150000,
+      "rate": 0,
+      "description": "ยกเว้น"
+    },
+    {
+      "minIncome": 150000,
+      "maxIncome": 300000,
+      "rate": 0.05,
+      "description": "5%"
+    },
+    {
+      "minIncome": 300000,
+      "maxIncome": 500000,
+      "rate": 0.10,
+      "description": "10%"
+    },
+    {
+      "minIncome": 500000,
+      "maxIncome": 750000,
+      "rate": 0.15,
+      "description": "15%"
+    },
+    {
+      "minIncome": 750000,
+      "maxIncome": 1000000,
+      "rate": 0.20,
+      "description": "20%"
+    },
+    {
+      "minIncome": 1000000,
+      "maxIncome": 2000000,
+      "rate": 0.25,
+      "description": "25%"
+    },
+    {
+      "minIncome": 2000000,
+      "maxIncome": 5000000,
+      "rate": 0.30,
+      "description": "30%"
+    },
+    {
+      "minIncome": 5000000,
+      "maxIncome": null,
+      "rate": 0.35,
+      "description": "35%"
+    }
+  ],
+
+  "withholdingTax": {
+    "description": "ภาษีหัก ณ ที่จ่าย จากเงินเดือน/โบนัส",
+    "calculationMethod": "cumulative",
+    "notes": "คำนวณตามวิธีเฉลี่ยสะสม ม.50(1)"
+  }
+}
